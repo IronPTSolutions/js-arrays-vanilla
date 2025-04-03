@@ -42,9 +42,49 @@ function getVowels(word) {
   return vowels;
 }
 
-console.log(`Vowels of camino: ${countVowels("camino")}`)
-console.log(`Vowels of camino: ${getVowels("camino")}`)
-console.log(`Vowels of caminoooooo: ${getVowels("caminoooooo")}`)
+function reverse(word) {
+  let reversedWord = '';
+  for (let i = word.length - 1; i >= 0; i--) {
+    const char = word[i];
+    reversedWord = reversedWord + char;
+  }
+  return reversedWord;
+}
+
+function dropDuplicatedChars(word) {
+  let cleaned = '';
+  for (let i = 0; i < word.length; i++) {
+    const char = word[i];
+    if (!cleaned.includes(char)) {
+      cleaned += char;
+    }
+  } 
+  return cleaned;
+}
+
+function countWords(text) {
+  let numberOfWords = 0;
+  for (let i = 0; i < text.length; i++) {
+    const previousChar = text[i - 1];
+    const char = text[i];
+    if ((char === ' ' && previousChar !== ' ' && previousChar) ||
+     (i === text.length - 1 && char !== ' ')) {
+      numberOfWords++;
+    }
+  } 
+  return numberOfWords;
+}
+
+console.log(`Vowels of camino: ${countVowels('camino')}`);
+console.log(`Vowels of camino: ${getVowels('camino')}`);
+console.log(`Vowels of caminoooooo: ${getVowels('caminoooooo')}`);
+
+console.log(`Number of words of 'Hello World': ${countWords('Hello World')}`);
+console.log(`Number of words of '  Hello World  ': ${countWords('  Hello World  ')}`);
+console.log(`Number of words of 'Hello       World': ${countWords('Hello       World')}`);
+console.log(`Number of words of 'Hello': ${countWords('Hello')}`);
+console.log(`Drop duplicates of caminoooooo: ${dropDuplicatedChars('caminoooooo')}`);
+console.log(`Reversed word: hola: ${reverse('hola')}`)
 
 const names = ['Carlos', 'Capi', 'Ramon', 'Pablo'];
 greet(names);
